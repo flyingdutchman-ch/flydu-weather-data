@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Transfer Files to Server via SCP
           command: |
-            scp -r . "$SSH_USER@$SSH_HOST:$SSH_DEPLOYPATH"
+            scp -r * "$SSH_USER@$SSH_HOST:$SSH_DEPLOYPATH"
 
      # - run:
      #     name: Deploy app to Flyingdutchman Server via Docker
