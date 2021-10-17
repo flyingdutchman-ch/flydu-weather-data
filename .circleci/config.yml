@@ -18,11 +18,11 @@ jobs:
             virtualenv helloworld
             . helloworld/bin/activate
             pip install --no-cache-dir -r requirements.txt
-      - run:
-          name: Run Tests
-          command: |
-            . helloworld/bin/activate
-            python hello_world_test.py
+      #- run:
+      #    name: Run Tests
+      #    command: |
+      #      . helloworld/bin/activate
+      #      python hello_world_test.py
       - run:
           name: Transfer Files to Server via SCP
           command: |
