@@ -6,7 +6,6 @@ jobs:
         environment:
           FLASK_CONFIG: testing
     steps:
-      - working_directory: ~/flydu-weather-data
       - add_ssh_keys:
           fingerprints:
             - "f3:e1:24:7a:b9:2e:61:73:23:e3:fa:f6:76:b2:a3:8f"
@@ -27,7 +26,7 @@ jobs:
       - run:
           name: Transfer Files to Server via SCP
           command: |
-            scp -r ~/flydu-weather-data "$SSH_USER@$SSH_HOST:$SSH_DEPLOYPATH"
+            scp -r . "$SSH_USER@$SSH_HOST:$SSH_DEPLOYPATH"
 
      # - run:
      #     name: Deploy app to Flyingdutchman Server via Docker
