@@ -22,7 +22,7 @@ jobs:
           name: Run Tests
           command: |
             . helloworld/bin/activate
-            python test_hello_world.py
+            python hello_world_test.py
       - run:
           name: Transfer Files to Server via SCP
           command: |
