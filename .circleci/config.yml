@@ -18,6 +18,10 @@ jobs:
             virtualenv helloworld
             . helloworld/bin/activate
             pip install --no-cache-dir -r requirements.txt
+      - run:
+          name: Add Target Node to known hosts
+          command: |
+            sudo ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
       #- run:
       #    name: Run Tests
       #    command: |
