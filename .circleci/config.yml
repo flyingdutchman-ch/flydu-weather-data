@@ -6,6 +6,10 @@ jobs:
         environment:
           FLASK_CONFIG: testing
     steps:
+      - working_directory: ~/flydu-weather-data
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:e1:24:7a:b9:2e:61:73:23:e3:fa:f6:76:b2:a3:8f"
       - checkout
       - run:
           name: Setup VirtualEnv
@@ -20,17 +24,12 @@ jobs:
           command: |
             . helloworld/bin/activate
             python test_hello_world.py
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
-          name: Build and push Docker image
+          name: Transfer Files to Server via SCP
           command: |
-            . helloworld/bin/activate
-            pyinstaller -F hello_world.py
-            docker build -t ariv3ra/$IMAGE_NAME:$TAG .
-            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-            docker push ariv3ra/$IMAGE_NAME:$TAG
-      - run:
-          name: Deploy app to Flyingdutchman Server via Docker
-          command: |
-            ssh -o StrictHostKeyChecking=no circleci@144.91.126.223 "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
+            scp -r ~/flydu-weather-data "$SSH_USER@$SSH_HOST:$SSH_DEPLOYPATH"
+
+     # - run:
+     #     name: Deploy app to Flyingdutchman Server via Docker
+     #     command: |
+     #       ssh -o StrictHostKeyChecking=no circleci@144.91.126.223 "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
