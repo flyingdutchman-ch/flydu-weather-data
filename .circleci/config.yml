@@ -44,4 +44,4 @@ jobs:
       - run:
           name: Startup Docker Image on Flyingdutchman Node
           command: |
-            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "/bin/bash ./deploy-flydu-docker.sh test-app:latest"
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "/bin/bash sudo ./deploy-flydu-docker.sh test-app:latest"
