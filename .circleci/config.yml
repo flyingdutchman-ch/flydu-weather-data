@@ -40,3 +40,8 @@ jobs:
           name: Build Docker Image on Flyingdutchman Node
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "sudo docker build -t test-app $SSH_DEPLOYPATH"
+
+      - run:
+          name: Startup Docker Image on Flyingdutchman Node
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "sudo docker run -it test-app hello-world.py"
