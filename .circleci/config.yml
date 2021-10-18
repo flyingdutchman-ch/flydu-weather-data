@@ -44,4 +44,4 @@ jobs:
       - run:
           name: Startup Docker Image on Flyingdutchman Node
           command: |
-            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "sudo docker run -it test-app hello-world.py"
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "/bin/bash ./deploy-flydu-docker.sh test-app:latest"
