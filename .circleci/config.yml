@@ -36,3 +36,7 @@ jobs:
      #     name: Deploy app to Flyingdutchman Server via Docker
      #     command: |
      #       ssh -o StrictHostKeyChecking=no circleci@144.91.126.223 "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
+      - run:
+          name: Build Docker Image on Flyingdutchman Node
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "cat 'blablablabla' > $SSH_DEPLOYPATH/deploytest.txt"
