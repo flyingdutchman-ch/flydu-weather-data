@@ -39,4 +39,4 @@ jobs:
       - run:
           name: Build Docker Image on Flyingdutchman Node
           command: |
-            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "touch $SSH_DEPLOYPATH/deploytest.txt"
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "docker image build $SSH_DEPLOYPATH"
